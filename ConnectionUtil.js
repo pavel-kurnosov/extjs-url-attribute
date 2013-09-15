@@ -20,8 +20,9 @@ Ext.define('app.util.ConnectionUtil', {
 			reqParams = Ext.Object.merge(options.params, reqParams);
 		}
 
+		urlResult = new Ext.Template(urlResult).apply(reqParams);
 		if (urlResult.indexOf('ext') === -1 && urlResult.substring(0, 1) !== '/') {
-            urlResult = serverURL + new Ext.Template(urlResult).apply(reqParams);
+            urlResult = serverURL + urlResult;
 		}
 
 		return urlResult;
